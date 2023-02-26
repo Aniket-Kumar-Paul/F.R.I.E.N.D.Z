@@ -1,0 +1,10 @@
+1. react
+2. react-redux : state management tool
+3. @reduxjs/toolkit :  wrapper around redux (very useful)
+4. redux-persist : selectively store states in local storage
+5. react-dropzone : handle file upload and handling with backend
+6. dotenv
+7. formik : form handling
+8. yup : validation
+9. react-router-dom@6
+10. @mui/material, @emotion/react, @emotion/styled, @mui/icons-material

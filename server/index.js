@@ -63,7 +63,7 @@ mongoose
   .then(() => {
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 
-    // ADD DUMMY DATA ONLY ONE TIME 
+    // UPLOAD DUMMY DATA TO MONOGODB ONLY ONE TIME (FOR TESTING)
     // User.insertMany(users);
     // Post.insertMany(posts);
   })
