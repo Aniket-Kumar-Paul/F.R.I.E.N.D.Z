@@ -2,7 +2,7 @@
 1. React
 2. Formik + yup (for form validation)
 3. Redux
-4. React Dropzone
+4. React Dropzone (file handling)
 5. Material UI
 
 **BACKEND**

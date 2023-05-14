@@ -19,8 +19,11 @@ import { verifyToken } from "./middleware/auth.js";
 // import {users, posts} from "./data/index.js";
 
 // CONFIGURATIONS
+
+//--- to grab files (used when type is module in package.json) ---
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -30,6 +33,7 @@ app.use(morgan("common"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+// set directory where we store assets(images) locally                                                           
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 
 // FILE STORAGE
@@ -45,6 +49,7 @@ const upload = multer({ storage });
 
 // ROUTES WITH FILES
 app.post("/auth/register", upload.single("picture"), register);
+// route to create post
 app.post("/posts", verifyToken, upload.single("picture"), createPost); 
 
 // ROUTES

@@ -1,3 +1,4 @@
+// AUTHENTICATION
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
@@ -34,7 +35,7 @@ export const register = async (req, res) => {
     const savedUser = await newUser.save();
     res.status(201).json(savedUser); // 201->something has been created
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message }); // internal server error
   }
 };
 
@@ -48,7 +49,9 @@ export const login = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
 
+    // Sign token
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    
     delete user.password; // delete so that it doesn't get sent back to the frontend
     res.status(200).json({ token, user });
   } catch (err) {
