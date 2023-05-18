@@ -5,6 +5,7 @@ import Friend from "components/Friend";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { BASE_URL } from "services/helper";
 import { setPost } from "state";
 
 const PostWidget = ({
@@ -31,7 +32,7 @@ const PostWidget = ({
     const primary = palette.primary.main;
 
     const patchLike = async () => {
-        const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
+        const response = await fetch(`${BASE_URL}/posts/${postId}/like`, {
             method: "PATCH",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -64,7 +65,7 @@ const PostWidget = ({
                     height="auto"
                     alt="post"
                     style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-                    src={`http://localhost:3001/assets/${picturePath}`}
+                    src={`${BASE_URL}/assets/${picturePath}`}
                 />
             )}
             <FlexBetween mt="0.25rem">

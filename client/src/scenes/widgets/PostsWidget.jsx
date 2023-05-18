@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "state";
 import PostWidget from "./PostWidget";
+import { BASE_URL } from "services/helper";
 
 const PostsWidget = ({ userId, isProfile = false }) => { // isProfile will be used to get only their own posts
     const dispatch = useDispatch();
@@ -9,7 +10,7 @@ const PostsWidget = ({ userId, isProfile = false }) => { // isProfile will be us
     const token = useSelector((state) => state.token);
 
     const getPosts = async () => {
-        const response = await fetch("http://localhost:3001/posts", {
+        const response = await fetch(`${BASE_URL}/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
         });
@@ -18,7 +19,7 @@ const PostsWidget = ({ userId, isProfile = false }) => { // isProfile will be us
     }
 
     const getUserPosts = async () => {
-        const response = await fetch(`http://localhost:3001/posts/${userId}/posts`, {
+        const response = await fetch(`${BASE_URL}/posts/${userId}/posts`, {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
         });

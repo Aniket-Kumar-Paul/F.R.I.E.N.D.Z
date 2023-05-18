@@ -11,3 +11,7 @@
 3. Mongoose
 4. JWT (for authentication)
 5. Multer (for file uploading)
+
+**DEPLOYMENT**
+Frontend: Netlify
+Backend: Render

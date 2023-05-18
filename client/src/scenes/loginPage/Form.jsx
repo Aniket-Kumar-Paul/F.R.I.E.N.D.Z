@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux'
 import Dropzone from 'react-dropzone' // To upload Picture
 import FlexBetween from 'components/FlexBetween'
 import { setLogin } from 'state'
+import { BASE_URL } from 'services/helper'
 
 // yup validation schema - will determine how the form library is going to save this info.
 // setup schema
@@ -66,7 +67,7 @@ const Form = () => {
 
         // calling backend endpoint
         const savedUserResponse = await fetch(
-            "http://localhost:3001/auth/register",
+            `${BASE_URL}/auth/register`,
             {
                 method: "POST",
                 body: formData
@@ -82,7 +83,7 @@ const Form = () => {
 
     const login = async (values, onSubmitProps) => {
         const loggedInResponse = await fetch(
-            "http://localhost:3001/auth/login",
+            `${BASE_URL}/auth/login`,
             {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},

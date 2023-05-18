@@ -5,6 +5,7 @@ import state, { setFriends } from "state";
 import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "services/helper";
 
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
     const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
 
     const patchFriend = async () => { // add/remove friend
         const response = await fetch(
-            `http://localhost:3001/users/${_id}/${friendId}`,
+            `${BASE_URL}/users/${_id}/${friendId}`,
             {
                 method: "PATCH",
                 headers: {
